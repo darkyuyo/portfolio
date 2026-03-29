@@ -1,49 +1,67 @@
-# React + TypeScript + Vite
+# La Biblioteca — Portfolio Interactivo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personal con concepto de biblioteca interactiva. Cada sección de tu perfil está representada como un libro en un estante: al hacer click en uno se abre con una animación de cambio de página y muestra el contenido interior.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Vite 8**
+- **Tailwind CSS v4**
+- **Framer Motion** — animaciones del estante, hover de libros y page flip 3D
+- **i18next / react-i18next** — soporte bilingüe ES / EN
 
-## React Compiler
+## Libros del estante
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| # | ID | Contenido |
+|---|---|---|
+| I | `about` | Prólogo — quién soy |
+| II | `stack` | Stack & Herramientas |
+| III | `experience` | Experiencia profesional |
+| IV | `projects` | Proyectos destacados |
+| V | `experimental` | Proyectos experimentales |
+| VI | `education` | Formación académica |
+| VII | `courses` | Certificaciones |
+| VIII | `contact` | Epílogo — contacto |
 
-## Expanding the ESLint configuration
+## Estructura del proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  data/
+    books.ts          # Datos de todos los libros (tipados)
+  i18n/
+    config.ts         # Configuración i18next
+    en.ts             # Traducciones en inglés
+    es.ts             # Traducciones en español
+  components/
+    layout/
+      Background.tsx  # Fondo oscuro cálido con partículas
+      Shelf.tsx        # Estante con tablones de madera
+    book/
+      BookSpine.tsx   # Lomo de cada libro (hover + stagger)
+      BookOpen.tsx    # Modal del libro abierto
+      PageFlip.tsx    # Animación de volteo de página
+    sections/         # Contenido interior de cada libro
+    ui/
+      LanguageToggle.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Personalización
+
+Todos los datos del portfolio están en `src/data/books.ts`. Edita ese archivo para reemplazar los placeholders con tu información real sin tocar ningún componente.
 
 ```js
 // eslint.config.js
