@@ -1,6 +1,7 @@
 const en = {
   ui: {
     langToggle: 'ES',
+    atAGlance: 'At a glance',
     close: 'Close',
     prev: 'Previous',
     next: 'Next',
@@ -64,6 +65,8 @@ const en = {
       spineSubtitle: 'Get in touch',
       pageTitle: 'Epilogue',
       pageSubtitle: "Let's connect",
+      quote: '"Walking in a straight line, no one can go very far."',
+      quoteAuthor: '— The Little Prince',
     },
   },
 } as const

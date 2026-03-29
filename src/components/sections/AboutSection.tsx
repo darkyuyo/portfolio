@@ -36,7 +36,7 @@ export default function AboutSection({ content }: Props) {
       {/* Highlights */}
       <div>
         <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.65rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.5)', marginBottom: '12px' }}>
-          At a glance
+          {t('ui.atAGlance')}
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           {content.highlights.map((item, i) => (

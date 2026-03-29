@@ -4,6 +4,7 @@ import Background from './components/layout/Background'
 import Shelf from './components/layout/Shelf'
 import BookOpen from './components/book/BookOpen'
 import LanguageToggle from './components/ui/LanguageToggle'
+import AudioPlayer from './components/ui/AudioPlayer'
 
 export default function App() {
   const [activeBook, setActiveBook] = useState<string | null>(null)
@@ -13,6 +14,7 @@ export default function App() {
       <Background />
 
       <LanguageToggle />
+      <AudioPlayer />
 
       <div
         style={{

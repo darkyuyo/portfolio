@@ -1,6 +1,7 @@
 const es = {
   ui: {
     langToggle: 'EN',
+    atAGlance: 'De un vistazo',
     close: 'Cerrar',
     prev: 'Anterior',
     next: 'Siguiente',
@@ -64,6 +65,8 @@ const es = {
       spineSubtitle: 'Contacto',
       pageTitle: 'Epílogo',
       pageSubtitle: 'Hablemos',
+      quote: '"Caminando en línea recta no puede uno llegar muy lejos."',
+      quoteAuthor: '— El Principito',
     },
   },
 } as const

@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 type Particle = {
   x: number
   y: number
@@ -19,8 +17,6 @@ const PARTICLES: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
 }))
 
 export default function Background() {
-  useEffect(() => {}, [])
-
   return (
     <div
       className="fixed inset-0 overflow-hidden pointer-events-none"

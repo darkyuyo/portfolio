@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 export default function LanguageToggle() {
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
   const currentLang = i18n.language
 
   const toggle = () => {
@@ -10,31 +10,69 @@ export default function LanguageToggle() {
   }
 
   return (
-    <motion.button
-      onClick={toggle}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      aria-label="Toggle language"
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.4 }}
       style={{
         position: 'fixed',
         top: '20px',
         right: '20px',
         zIndex: 30,
-        fontFamily: 'var(--font-serif)',
-        fontStyle: 'italic',
-        fontSize: '0.78rem',
-        letterSpacing: '0.12em',
-        color: 'var(--color-gold-accent)',
-        background: 'rgba(26,18,8,0.75)',
-        border: '1px solid rgba(201,162,39,0.3)',
-        borderRadius: '3px',
-        padding: '6px 14px',
-        cursor: 'pointer',
-        backdropFilter: 'blur(4px)',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+        display: 'flex',
+        alignItems: 'center',
+        background: 'rgba(26,18,8,0.85)',
+        border: '1px solid rgba(201,162,39,0.55)',
+        borderRadius: '4px',
+        overflow: 'hidden',
+        backdropFilter: 'blur(8px)',
+        boxShadow: '0 4px 16px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,162,39,0.1)',
       }}
     >
-      {t('ui.langToggle')}
-    </motion.button>
+      {(['es', 'en'] as const).map((lang) => {
+        const isActive = currentLang === lang
+        return (
+          <motion.button
+            key={lang}
+            onClick={toggle}
+            whileHover={!isActive ? { background: 'rgba(201,162,39,0.12)' } : {}}
+            whileTap={{ scale: 0.95 }}
+            aria-label={`Switch to ${lang === 'en' ? 'English' : 'Español'}`}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontSize: '0.85rem',
+              letterSpacing: '0.1em',
+              padding: '8px 16px',
+              cursor: isActive ? 'default' : 'pointer',
+              border: 'none',
+              background: isActive ? 'rgba(201,162,39,0.22)' : 'transparent',
+              color: isActive ? 'var(--color-gold-accent)' : 'rgba(245,230,200,0.4)',
+              fontWeight: isActive ? 700 : 400,
+              transition: 'color 0.2s, background 0.2s',
+              position: 'relative',
+            }}
+          >
+            {lang.toUpperCase()}
+            {isActive && (
+              <motion.span
+                layoutId="lang-indicator"
+                style={{
+                  position: 'absolute',
+                  bottom: '5px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '16px',
+                  height: '2px',
+                  background: 'var(--color-gold-accent)',
+                  borderRadius: '1px',
+                  display: 'block',
+                }}
+              />
+            )}
+          </motion.button>
+        )
+      })}
+    </motion.div>
   )
 }
