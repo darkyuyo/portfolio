@@ -28,11 +28,6 @@ function ProjectCard({ project, index, bookKey }: { project: Project; index: num
           {project.name}
         </h3>
         <div style={{ display: 'flex', gap: '6px' }}>
-          {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(92,58,30,0.12)', border: '1px solid rgba(92,58,30,0.3)', borderRadius: '2px', color: '#3a2208', textDecoration: 'none', fontFamily: 'var(--font-sans)', letterSpacing: '0.06em' }}>
-              {t('ui.viewGithub')}
-            </a>
-          )}
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(201,162,39,0.15)', border: '1px solid rgba(201,162,39,0.4)', borderRadius: '2px', color: '#3a2208', textDecoration: 'none', fontFamily: 'var(--font-sans)', letterSpacing: '0.06em' }}>
               {t('ui.viewDemo')}
