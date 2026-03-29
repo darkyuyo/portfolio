@@ -13,7 +13,6 @@ export default function Shelf({ onBookClick }: ShelfProps) {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full" style={{ zIndex: 1, position: 'relative' }}>
 
-      {/* Intro text */}
       <motion.p
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -30,14 +29,12 @@ export default function Shelf({ onBookClick }: ShelfProps) {
         {t('ui.intro')}
       </motion.p>
 
-      {/* Bookshelf */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         style={{ position: 'relative' }}
       >
-        {/* Books row */}
         <div
           style={{
             display: 'flex',
@@ -58,29 +55,24 @@ export default function Shelf({ onBookClick }: ShelfProps) {
           ))}
         </div>
 
-        {/* Shelf plank top */}
         <div
           style={{
             height: '6px',
-            background: `linear-gradient(180deg, var(--color-wood-light) 0%, var(--color-wood-medium) 100%)`,
-            borderRadius: '2px 2px 0 0',
+            background: `linear-gradient(180deg, var(--color-wood-light) 0%, var(--color-wood-medium) 100%)`,            borderRadius: '2px 2px 0 0',
             boxShadow: '0 -2px 8px rgba(0,0,0,0.4)',
             position: 'relative',
             zIndex: 3,
           }}
         />
 
-        {/* Shelf plank body */}
         <div
           style={{
             height: '28px',
-            background: `linear-gradient(180deg, var(--color-wood-medium) 0%, var(--color-wood-dark) 60%, #2a1d13 100%)`,
-            boxShadow: '0 8px 24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06)',
+            background: `linear-gradient(180deg, var(--color-wood-medium) 0%, var(--color-wood-dark) 60%, #2a1d13 100%)`,            boxShadow: '0 8px 24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06)',
             position: 'relative',
             zIndex: 3,
           }}
         >
-          {/* Wood grain lines */}
           {[15, 35, 55, 75, 90].map((pct) => (
             <div
               key={pct}
@@ -97,7 +89,6 @@ export default function Shelf({ onBookClick }: ShelfProps) {
           ))}
         </div>
 
-        {/* Shelf shadow */}
         <div
           style={{
             height: '12px',

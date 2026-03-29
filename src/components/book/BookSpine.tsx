@@ -73,7 +73,6 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         overflow: 'hidden',
       }}
     >
-      {/* Roman numeral top */}
       <span
         style={{
           fontFamily: 'var(--font-serif)',
@@ -85,7 +84,6 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         {book.spine.roman}
       </span>
 
-      {/* Title – rotated along spine */}
       <span
         style={{
           fontFamily: 'var(--font-serif)',
@@ -104,7 +102,6 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         {title}
       </span>
 
-      {/* Gold accent line at bottom */}
       <div
         style={{
           width: '60%',
@@ -115,7 +112,6 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         }}
       />
 
-      {/* Spine left-edge highlight */}
       <div
         style={{
           position: 'absolute',
@@ -128,7 +124,6 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         }}
       />
 
-      {/* Hover glow overlay */}
       <motion.div
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}

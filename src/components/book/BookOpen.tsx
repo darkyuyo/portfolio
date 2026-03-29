@@ -16,7 +16,6 @@ type BookOpenProps = {
   onClose: () => void
 }
 
-/** Splits an array into chunks of `size` */
 function chunkArray<T>(array: T[], size: number): T[][] {
   const chunks: T[][] = []
   for (let i = 0; i < array.length; i += size) {
@@ -40,7 +39,6 @@ function buildPages(book: ReturnType<typeof BOOKS.find> & object): ReactNode[] {
       return [<ExperienceSection key="exp" content={content} />]
 
     case 'projects': {
-      // Split projects: 2 per page
       const chunks = chunkArray(content.items, 2)
       return chunks.map((chunk, i) => (
         <ProjectsSection
@@ -83,7 +81,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
     <AnimatePresence>
       {book && (
         <>
-          {/* Backdrop */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
@@ -101,7 +98,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
             }}
           />
 
-          {/* Centering wrapper — fixed, no animation, no transform conflict */}
           <div
             style={{
               position: 'fixed',
@@ -113,7 +109,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
               pointerEvents: 'none',
             }}
           >
-          {/* Book container */}
           <motion.div
             key="book-open"
             initial={{ opacity: 0, scale: 0.88, y: 16 }}
@@ -130,7 +125,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
               boxShadow: '0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,39,0.15)',
             }}
           >
-            {/* Left page — cover / spine color */}
             <div
               style={{
                 width: '38%',
@@ -145,7 +139,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
                 overflow: 'hidden',
               }}
             >
-              {/* Decorative circles */}
               <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '120px', height: '120px', borderRadius: '50%', border: '1px solid rgba(201,162,39,0.15)' }} />
               <div style={{ position: 'absolute', bottom: '-30px', left: '-30px', width: '90px', height: '90px', borderRadius: '50%', border: '1px solid rgba(201,162,39,0.1)' }} />
 
@@ -168,10 +161,8 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
               </motion.div>
             </div>
 
-            {/* Spine crease */}
             <div style={{ width: '4px', background: 'linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%)', flexShrink: 0 }} />
 
-            {/* Right page — content */}
             <div
               style={{
                 flex: 1,
@@ -182,7 +173,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
                 position: 'relative',
               }}
             >
-              {/* Close button */}
               <button
                 onClick={onClose}
                 aria-label={t('ui.close')}
@@ -208,7 +198,6 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
                 ✕
               </button>
 
-              {/* Pages */}
               <PageFlip
                 pages={pages}
                 bookColor={book.spine.color}

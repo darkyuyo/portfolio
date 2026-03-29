@@ -14,7 +14,6 @@ export default function App() {
 
       <LanguageToggle />
 
-      {/* Shelf — hidden when a book is open to avoid layout shift */}
       <div
         style={{
           position: 'absolute',
@@ -32,7 +31,6 @@ export default function App() {
         <Shelf onBookClick={setActiveBook} />
       </div>
 
-      {/* Book modal */}
       <AnimatePresence>
         {activeBook && (
           <BookOpen

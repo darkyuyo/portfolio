@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 type Particle = {
   x: number
@@ -10,22 +10,16 @@ type Particle = {
 
 const PARTICLE_COUNT = 18
 
-function generateParticles(): Particle[] {
-  return Array.from({ length: PARTICLE_COUNT }, () => ({
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    duration: Math.random() * 12 + 8,
-    delay: Math.random() * 10,
-  }))
-}
+const PARTICLES: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: Math.random() * 2 + 1,
+  duration: Math.random() * 12 + 8,
+  delay: Math.random() * 10,
+}))
 
 export default function Background() {
-  const particles = useRef<Particle[]>(generateParticles())
-
-  useEffect(() => {
-    // Nothing needed – CSS handles animation
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <div
@@ -33,13 +27,11 @@ export default function Background() {
       aria-hidden="true"
       style={{ zIndex: 0 }}
     >
-      {/* Base dark background */}
       <div
         className="absolute inset-0"
         style={{ background: 'var(--color-bg-library)' }}
       />
 
-      {/* Warm radial glow from bottom center (lamp effect) */}
       <div
         className="absolute inset-0"
         style={{
@@ -48,7 +40,6 @@ export default function Background() {
         }}
       />
 
-      {/* Vignette */}
       <div
         className="absolute inset-0"
         style={{
@@ -57,8 +48,7 @@ export default function Background() {
         }}
       />
 
-      {/* Floating dust particles */}
-      {particles.current.map((p, i) => (
+      {PARTICLES.map((p, i) => (
         <span
           key={i}
           className="particle"
