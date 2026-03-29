@@ -21,7 +21,7 @@ export default function Shelf({ onBookClick }: ShelfProps) {
           color: 'var(--color-text-muted)',
           fontFamily: 'var(--font-serif)',
           fontStyle: 'italic',
-          fontSize: '0.95rem',
+          fontSize: '1.15rem',
           marginBottom: '2.5rem',
           letterSpacing: '0.02em',
         }}

@@ -49,7 +49,7 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
           >
             <div
               className="book-scroll"
-              style={{ height: '100%', overflowY: 'auto', padding: '32px 36px', color: '#2a1d13' }}
+              style={{ height: '100%', overflowY: 'auto', padding: '40px 48px', color: '#2a1d13' }}
             >
               {pages[currentPage]}
             </div>
@@ -77,7 +77,7 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
             whileTap={canPrev ? { scale: 0.95 } : {}}
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '0.75rem',
+              fontSize: '0.9rem',
               color: canPrev ? bookColor : 'rgba(92,58,30,0.35)',
               background: 'none',
               border: 'none',
@@ -95,7 +95,7 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
           <span
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.7rem',
+              fontSize: '0.84rem',
               color: 'rgba(92,58,30,0.6)',
               letterSpacing: '0.08em',
             }}
@@ -110,7 +110,7 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
             whileTap={canNext ? { scale: 0.95 } : {}}
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '0.75rem',
+              fontSize: '0.9rem',
               color: canNext ? bookColor : 'rgba(92,58,30,0.35)',
               background: 'none',
               border: 'none',

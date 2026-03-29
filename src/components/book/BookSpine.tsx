@@ -10,14 +10,14 @@ type BookSpineProps = {
 
 // Book height slightly varies per book for a natural look
 const HEIGHT_MAP: Record<string, number> = {
-  about: 220,
-  stack: 240,
-  experience: 215,
-  projects: 260,
-  experimental: 210,
-  education: 218,
-  courses: 205,
-  contact: 222,
+  about: 290,
+  stack: 315,
+  experience: 285,
+  projects: 340,
+  experimental: 278,
+  education: 288,
+  courses: 272,
+  contact: 294,
 }
 
 export default function BookSpine({ book, index, onClick }: BookSpineProps) {
@@ -45,7 +45,7 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
       whileTap={{ scale: 0.98 }}
       style={{
         position: 'relative',
-        width: `${book.spine.thickness}px`,
+        width: `${Math.round(book.spine.thickness * 1.35)}px`,
         height: `${height}px`,
         background: `linear-gradient(
           180deg,
@@ -76,7 +76,7 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
       <span
         style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: '0.6rem',
+          fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.35)',
           letterSpacing: '0.05em',
         }}
@@ -87,7 +87,7 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
       <span
         style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: '0.7rem',
+          fontSize: '0.85rem',
           fontWeight: 600,
           color: 'rgba(255,255,255,0.92)',
           letterSpacing: '0.12em',

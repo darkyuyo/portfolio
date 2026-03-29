@@ -117,8 +117,8 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
             transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{
               pointerEvents: 'auto',
-              width: 'min(780px, 95vw)',
-              height: 'min(540px, 88vh)',
+              width: 'min(1020px, 96vw)',
+              height: 'min(700px, 92vh)',
               display: 'flex',
               borderRadius: '4px',
               overflow: 'hidden',
@@ -148,14 +148,14 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
                 transition={{ delay: 0.2, duration: 0.4 }}
                 style={{ textAlign: 'center', zIndex: 1 }}
               >
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: '16px' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.78rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: '16px' }}>
                   {book.spine.roman}
                 </p>
-                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', fontWeight: 700, color: 'rgba(255,255,255,0.95)', lineHeight: 1.25, marginBottom: '12px', fontStyle: 'italic' }}>
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.1rem', fontWeight: 700, color: 'rgba(255,255,255,0.95)', lineHeight: 1.25, marginBottom: '12px', fontStyle: 'italic' }}>
                   {t(book.spine.titleKey as Parameters<typeof t>[0])}
                 </h2>
                 <div style={{ width: '40px', height: '1px', background: 'rgba(201,162,39,0.6)', margin: '0 auto 12px' }} />
-                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.92rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
                   {t(book.spine.subtitleKey as Parameters<typeof t>[0])}
                 </p>
               </motion.div>

@@ -41,9 +41,9 @@ const es = {
       solution: 'Solución',
     },
     experimental: {
-      spineTitle: 'Laboratorio',
+      spineTitle: 'Prototipos',
       spineSubtitle: 'Experimentos',
-      pageTitle: 'El Laboratorio',
+      pageTitle: 'Prototipos',
       pageSubtitle: 'Proyectos experimentales',
       challenge: 'Desafío',
       solution: 'Solución',

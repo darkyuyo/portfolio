@@ -41,9 +41,9 @@ const en = {
       solution: 'Solution',
     },
     experimental: {
-      spineTitle: 'Lab',
+      spineTitle: 'Prototypes',
       spineSubtitle: 'Experiments',
-      pageTitle: 'The Laboratory',
+      pageTitle: 'Prototypes',
       pageSubtitle: 'Experimental projects',
       challenge: 'Challenge',
       solution: 'Solution',
