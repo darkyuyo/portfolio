@@ -8,7 +8,8 @@ type Props = {
 }
 
 function ProjectCard({ project, index, bookKey }: { project: Project; index: number; bookKey: Props['bookKey'] }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -50,7 +51,7 @@ function ProjectCard({ project, index, bookKey }: { project: Project; index: num
       </div>
 
       <p style={{ fontSize: '0.82rem', color: '#3a2a1a', lineHeight: 1.65, marginBottom: '8px' }}>
-        {project.description}
+        {project.description[lang]}
       </p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
@@ -58,13 +59,13 @@ function ProjectCard({ project, index, bookKey }: { project: Project; index: num
           <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.55)', marginBottom: '4px' }}>
             {t(`books.${bookKey}.challenge` as Parameters<typeof t>[0])}
           </p>
-          <p style={{ fontSize: '0.75rem', color: '#3a2a1a', lineHeight: 1.5 }}>{project.challenge}</p>
+          <p style={{ fontSize: '0.75rem', color: '#3a2a1a', lineHeight: 1.5 }}>{project.challenge[lang]}</p>
         </div>
         <div style={{ padding: '8px', background: 'rgba(255,255,255,0.4)', borderRadius: '3px', borderLeft: '2px solid rgba(201,162,39,0.5)' }}>
           <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.55)', marginBottom: '4px' }}>
             {t(`books.${bookKey}.solution` as Parameters<typeof t>[0])}
           </p>
-          <p style={{ fontSize: '0.75rem', color: '#3a2a1a', lineHeight: 1.5 }}>{project.solution}</p>
+          <p style={{ fontSize: '0.75rem', color: '#3a2a1a', lineHeight: 1.5 }}>{project.solution[lang]}</p>
         </div>
       </div>
     </motion.div>

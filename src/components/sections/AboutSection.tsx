@@ -5,7 +5,8 @@ import type { BookContent } from '../../data/books'
 type Props = { content: Extract<BookContent, { type: 'about' }> }
 
 export default function AboutSection({ content }: Props) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
   return (
     <div style={{ fontFamily: 'var(--font-sans)' }}>
       {/* Page header */}
@@ -28,7 +29,7 @@ export default function AboutSection({ content }: Props) {
             transition={{ delay: i * 0.1, duration: 0.4 }}
             style={{ fontSize: '1.02rem', lineHeight: 1.75, color: '#3a2a1a', margin: 0 }}
           >
-            {paragraph}
+            {paragraph[lang]}
           </motion.p>
         ))}
       </div>
@@ -41,7 +42,7 @@ export default function AboutSection({ content }: Props) {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           {content.highlights.map((item, i) => (
             <motion.span
-              key={item}
+              key={item.en}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + i * 0.06 }}
@@ -56,7 +57,7 @@ export default function AboutSection({ content }: Props) {
                 background: 'rgba(201,162,39,0.08)',
               }}
             >
-              {item}
+              {item[lang]}
             </motion.span>
           ))}
         </div>

@@ -5,7 +5,8 @@ import type { BookContent } from '../../data/books'
 type Props = { content: Extract<BookContent, { type: 'experience' }> }
 
 export default function ExperienceSection({ content }: Props) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
   return (
     <div style={{ fontFamily: 'var(--font-sans)' }}>
       <div style={{ marginBottom: '28px', borderBottom: '1px solid rgba(92,58,30,0.25)', paddingBottom: '16px' }}>
@@ -51,12 +52,12 @@ export default function ExperienceSection({ content }: Props) {
               </span>
             </div>
             <p style={{ fontSize: '0.78rem', fontStyle: 'italic', color: 'rgba(60,34,20,0.7)', marginBottom: '8px' }}>
-              {item.role}
+              {item.role[lang]}
             </p>
             <ul style={{ margin: 0, paddingLeft: '16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {item.description.map((line, li) => (
                 <li key={li} style={{ fontSize: '0.82rem', color: '#3a2a1a', lineHeight: 1.6, listStyleType: 'disc' }}>
-                  {line}
+                  {line[lang]}
                 </li>
               ))}
             </ul>

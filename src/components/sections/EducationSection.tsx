@@ -5,7 +5,8 @@ import type { BookContent } from '../../data/books'
 type Props = { content: Extract<BookContent, { type: 'education' }> }
 
 export default function EducationSection({ content }: Props) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
   return (
     <div style={{ fontFamily: 'var(--font-sans)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '300px', textAlign: 'center' }}>
       <div style={{ marginBottom: '40px', borderBottom: '1px solid rgba(92,58,30,0.25)', paddingBottom: '16px', width: '100%' }}>
@@ -40,10 +41,10 @@ export default function EducationSection({ content }: Props) {
           </div>
 
           <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.5)', marginBottom: '12px' }}>
-            {item.period}
+            {item.period[lang]}
           </p>
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', fontWeight: 600, color: '#2a1208', marginBottom: '8px', lineHeight: 1.3 }}>
-            {item.degree}
+            {item.degree[lang]}
           </h3>
           <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '0.88rem', color: 'rgba(60,34,20,0.75)' }}>
             {item.institution}
