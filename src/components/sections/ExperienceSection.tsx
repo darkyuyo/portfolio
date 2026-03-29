@@ -48,7 +48,7 @@ export default function ExperienceSection({ content }: Props) {
                 {item.company}
               </span>
               <span style={{ fontSize: '0.7rem', color: 'rgba(92,58,30,0.55)', letterSpacing: '0.04em' }}>
-                {item.period}
+                {item.period[lang]}
               </span>
             </div>
             <p style={{ fontSize: '0.78rem', fontStyle: 'italic', color: 'rgba(60,34,20,0.7)', marginBottom: '8px' }}>

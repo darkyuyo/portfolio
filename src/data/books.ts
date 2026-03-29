@@ -5,7 +5,7 @@ export type SkillGroup = { category: L; skills: string[] }
 export type TimelineItem = {
   company: string
   role: L
-  period: string
+  period: L
   description: L[]
 }
 
@@ -136,7 +136,7 @@ export const BOOKS: Book[] = [
         {
           company: 'Blackend',
           role: { es: 'Desarrollador Fullstack', en: 'Fullstack Developer' },
-          period: 'Febrero 2026 – Presente',
+          period: { es: 'Febrero 2025 – Presente', en: 'February 2025 – Present' },
           description: [
             { es: 'Desarrollo y mantención de múltiples aplicaciones productivas para móvil y web.', en: 'Development and maintenance of multiple production applications for mobile and web.' },
             { es: 'Lideré el ciclo completo del producto, desde el diseño de arquitectura hasta el despliegue en iOS, Android y web.', en: 'Led full product lifecycle from architecture design to deployment across iOS, Android and web.' },
@@ -145,7 +145,7 @@ export const BOOKS: Book[] = [
         {
           company: 'IBM S.A',
           role: { es: 'Consultor IT', en: 'IT Consultant' },
-          period: 'Enero – Julio 2023',
+          period: { es: 'Enero – Julio 2023', en: 'January – July 2023' },
           description: [
             { es: 'Migración de versión SAP para el proyecto Carozzi.', en: 'SAP version migration for the Carozzi project.' },
             { es: 'Verificación de consistencia de versiones, carga de perfiles y créditos, actualización de roles y configuración de condiciones de contrato.', en: 'Version consistency verification, profile and credit loading, role updates and contract conditions setup.' },
@@ -154,7 +154,7 @@ export const BOOKS: Book[] = [
         {
           company: 'Práctica Industrial MELÓN S.A',
           role: { es: 'Desarrollador en Práctica', en: 'Intern Developer' },
-          period: 'Enero – Marzo 2021',
+          period: { es: 'Enero – Marzo 2021', en: 'January – March 2021' },
           description: [
             { es: 'Revisión y diagramación de procesos de negocio.', en: 'Business process review and diagramming.' },
             { es: 'Elaboración de documentos técnicos de entrega.', en: 'Preparation of technical delivery documents.' },
