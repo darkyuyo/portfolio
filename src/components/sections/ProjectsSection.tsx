@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import type { BookContent, Project } from '../../data/books'
+import { useIsMobile } from '../../hooks/useIsMobile'
 
 type Props = {
   content: Extract<BookContent, { type: 'projects' }> | Extract<BookContent, { type: 'experimental' }>
@@ -10,6 +11,7 @@ type Props = {
 function ProjectCard({ project, index, bookKey }: { project: Project; index: number; bookKey: Props['bookKey'] }) {
   const { t, i18n } = useTranslation()
   const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
+  const isMobile = useIsMobile()
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -49,7 +51,7 @@ function ProjectCard({ project, index, bookKey }: { project: Project; index: num
         {project.description[lang]}
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '8px' }}>
         <div style={{ padding: '8px', background: 'rgba(255,255,255,0.4)', borderRadius: '3px', borderLeft: '2px solid rgba(92,58,30,0.4)' }}>
           <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.62rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.55)', marginBottom: '4px' }}>
             {t(`books.${bookKey}.challenge` as Parameters<typeof t>[0])}

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { BOOKS } from '../../data/books'
@@ -7,8 +8,23 @@ type ShelfProps = {
   onBookClick: (bookId: string) => void
 }
 
+const SHELF_NATURAL_WIDTH = 660
+
 export default function Shelf({ onBookClick }: ShelfProps) {
   const { t } = useTranslation()
+  const [shelfScale, setShelfScale] = useState(1)
+
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth
+      setShelfScale(w < 768 ? Math.min(1, (w - 16) / SHELF_NATURAL_WIDTH) : 1)
+    }
+    compute()
+    window.addEventListener('resize', compute)
+    return () => window.removeEventListener('resize', compute)
+  }, [])
+
+  const isMobile = shelfScale < 1
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full" style={{ zIndex: 1, position: 'relative' }}>
@@ -21,9 +37,11 @@ export default function Shelf({ onBookClick }: ShelfProps) {
           color: 'var(--color-text-muted)',
           fontFamily: 'var(--font-serif)',
           fontStyle: 'italic',
-          fontSize: '1.15rem',
-          marginBottom: '2.5rem',
+          fontSize: isMobile ? '0.9rem' : '1.15rem',
+          marginBottom: isMobile ? '1.2rem' : '2.5rem',
           letterSpacing: '0.02em',
+          textAlign: 'center',
+          padding: '0 16px',
         }}
       >
         {t('ui.intro')}
@@ -33,7 +51,10 @@ export default function Shelf({ onBookClick }: ShelfProps) {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-        style={{ position: 'relative' }}
+        style={{
+          position: 'relative',
+          zoom: shelfScale < 1 ? shelfScale : undefined,
+        }}
       >
         <div
           style={{

@@ -5,16 +5,19 @@ import Shelf from './components/layout/Shelf'
 import BookOpen from './components/book/BookOpen'
 import LanguageToggle from './components/ui/LanguageToggle'
 import AudioPlayer from './components/ui/AudioPlayer'
+import { useIsMobile } from './hooks/useIsMobile'
 
 export default function App() {
   const [activeBook, setActiveBook] = useState<string | null>(null)
+  const isSmallDevice = useIsMobile(900)
+  const hideUI = isSmallDevice && !!activeBook
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
       <Background />
 
-      <LanguageToggle />
-      <AudioPlayer />
+      <LanguageToggle hidden={hideUI} />
+      <AudioPlayer hidden={hideUI} />
 
       <div
         style={{

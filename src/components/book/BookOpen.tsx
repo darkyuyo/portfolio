@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { BOOKS } from '../../data/books'
 import PageFlip from './PageFlip'
+import { useIsMobile } from '../../hooks/useIsMobile'
 import AboutSection from '../sections/AboutSection'
 import StackSection from '../sections/StackSection'
 import ExperienceSection from '../sections/ExperienceSection'
@@ -74,6 +75,7 @@ function buildPages(book: ReturnType<typeof BOOKS.find> & object): ReactNode[] {
 
 export default function BookOpen({ bookId, onClose }: BookOpenProps) {
   const { t } = useTranslation()
+  const isMobile = useIsMobile()
   const book = bookId ? BOOKS.find((b) => b.id === bookId) : null
   const pages = book ? buildPages(book) : []
 
@@ -117,14 +119,62 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
             transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{
               pointerEvents: 'auto',
-              width: 'min(1020px, 96vw)',
-              height: 'min(700px, 92vh)',
+              width: isMobile ? '100vw' : 'min(1020px, 96vw)',
+              height: isMobile ? '100dvh' : 'min(700px, 92vh)',
               display: 'flex',
-              borderRadius: '4px',
+              flexDirection: isMobile ? 'column' : 'row',
+              borderRadius: isMobile ? 0 : '4px',
               overflow: 'hidden',
               boxShadow: '0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,162,39,0.15)',
             }}
           >
+            {isMobile ? (
+              <div
+                style={{
+                  height: '56px',
+                  flexShrink: 0,
+                  background: `linear-gradient(135deg, ${book.spine.highlightColor} 0%, ${book.spine.color} 100%)`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '0 16px',
+                  justifyContent: 'space-between',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '70px', height: '70px', borderRadius: '50%', border: '1px solid rgba(201,162,39,0.15)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', zIndex: 1 }}>
+                  <span style={{ fontFamily: 'var(--font-serif)', fontSize: '0.72rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
+                    {book.spine.roman}
+                  </span>
+                  <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.2)' }} />
+                  <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', fontWeight: 700, color: 'rgba(255,255,255,0.95)', margin: 0, fontStyle: 'italic' }}>
+                    {t(book.spine.titleKey as Parameters<typeof t>[0])}
+                  </h2>
+                </div>
+                <button
+                  onClick={onClose}
+                  aria-label={t('ui.close')}
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    border: '1px solid rgba(255,255,255,0.25)',
+                    background: 'rgba(0,0,0,0.2)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '0.85rem',
+                    color: 'rgba(255,255,255,0.85)',
+                    zIndex: 1,
+                    flexShrink: 0,
+                  }}
+                >
+                  ✕
+                </button>
+              </div>
+            ) : (
             <div
               style={{
                 width: '38%',
@@ -160,8 +210,9 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
                 </p>
               </motion.div>
             </div>
+            )}
 
-            <div style={{ width: '4px', background: 'linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%)', flexShrink: 0 }} />
+            {!isMobile && <div style={{ width: '4px', background: 'linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%)', flexShrink: 0 }} />}
 
             <div
               style={{
@@ -173,6 +224,7 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
                 position: 'relative',
               }}
             >
+              {!isMobile && (
               <button
                 onClick={onClose}
                 aria-label={t('ui.close')}
@@ -197,6 +249,7 @@ export default function BookOpen({ bookId, onClose }: BookOpenProps) {
               >
                 ✕
               </button>
+              )}
 
               <PageFlip
                 pages={pages}

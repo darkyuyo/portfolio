@@ -73,3 +73,9 @@ html, body, #root {
 
 /* ── Selection color ───────────────────────────────────── */
 ::selection { background: var(--color-gold-accent); color: #1a1208; }
+
+@media (max-width: 767px) {
+  .book-scroll h2 {
+    font-size: 1.5rem !important;
+  }
+}

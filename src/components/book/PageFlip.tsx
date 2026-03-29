@@ -2,6 +2,7 @@
 import type { ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { useIsMobile } from '../../hooks/useIsMobile'
 
 type PageFlipProps = {
   pages: ReactNode[]
@@ -11,6 +12,7 @@ type PageFlipProps = {
 
 export default function PageFlip({ pages, bookColor }: PageFlipProps) {
   const { t } = useTranslation()
+  const isMobile = useIsMobile()
   const [currentPage, setCurrentPage] = useState(0)
   const [direction, setDirection] = useState<1 | -1>(1)
 
@@ -49,7 +51,7 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
           >
             <div
               className="book-scroll"
-              style={{ height: '100%', overflowY: 'auto', padding: '40px 48px', color: '#2a1d13' }}
+              style={{ height: '100%', overflowY: 'auto', padding: isMobile ? '24px 20px' : '40px 48px', color: '#2a1d13' }}
             >
               {pages[currentPage]}
             </div>

@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
-export default function LanguageToggle() {
+export default function LanguageToggle({ hidden }: { hidden?: boolean }) {
   const { i18n } = useTranslation()
   const currentLang = i18n.language
 
   const toggle = () => {
     i18n.changeLanguage(currentLang === 'en' ? 'es' : 'en')
   }
+
+  if (hidden) return null
 
   return (
     <motion.div
