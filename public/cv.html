@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV — Alfredo Llanos</title>
+  <style>
+    :root {
+      --sidebar: #ebe4f4;
+      --sidebar-ink: #3a2a55;
+      --ink: #1a1a1a;
+      --muted: #555;
+      --line: #d4cce0;
+      --accent: #5b4a7a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: #e8e8e8;
+      line-height: 1.42;
+      font-size: 10pt;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      padding: 14px;
+      background: #1a1a1a;
+    }
+
+    .toolbar a,
+    .toolbar button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 6px;
+      color: #1a1a1a;
+      background: #f5e6c8;
+    }
+
+    .toolbar a.secondary,
+    .toolbar button.secondary {
+      background: transparent;
+      color: #f5e6c8;
+      border: 1px solid #f5e6c8;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 18px auto;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 64mm 1fr;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+    }
+
+    .sidebar {
+      background: var(--sidebar);
+      color: var(--sidebar-ink);
+      padding: 13mm 8mm 11mm;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .main {
+      padding: 12mm 10mm 10mm 9mm;
+    }
+
+    .side-block { margin-bottom: 15px; }
+
+    .side-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: var(--accent);
+    }
+
+    .side-block p,
+    .side-block li {
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+
+    .side-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-bottom: 8px;
+      font-size: 0.74rem;
+      word-break: break-word;
+    }
+
+    .contact-item a {
+      color: var(--sidebar-ink);
+      text-decoration: none;
+    }
+
+    .contact-item span.label {
+      font-weight: 700;
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .edu-school { font-weight: 700; font-size: 0.76rem; }
+    .edu-degree { font-size: 0.72rem; margin: 3px 0; }
+    .edu-dates { font-size: 0.68rem; opacity: 0.75; }
+
+    .course-item {
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+    .course-item strong { display: block; }
+
+    .header h1 {
+      font-size: 1.7rem;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 3px;
+    }
+
+    .header .role {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 9px;
+    }
+
+    .summary {
+      font-size: 0.84rem;
+      color: #333;
+      margin-bottom: 13px;
+      line-height: 1.45;
+    }
+
+    .section-title {
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-bottom: 1.5px solid var(--line);
+      padding-bottom: 4px;
+      margin: 0 0 9px;
+      color: var(--accent);
+    }
+
+    .job { margin-bottom: 11px; }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+    }
+
+    .job-dates {
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .job-company {
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin: 1px 0 4px;
+    }
+
+    .job ul {
+      margin-left: 1.1em;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .job li {
+      font-size: 0.76rem;
+      color: #2a2a2a;
+    }
+
+    .project {
+      margin-bottom: 9px;
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-name a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(91, 74, 122, 0.35);
+    }
+
+    .project-tech {
+      font-size: 0.66rem;
+      color: var(--accent);
+      margin: 2px 0 3px;
+      font-weight: 600;
+    }
+
+    .project p {
+      font-size: 0.74rem;
+      color: #2a2a2a;
+      line-height: 1.4;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none !important; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a href="./Alfredo-Llanos-CV.pdf" download="Alfredo-Llanos-CV.pdf">Descargar PDF</a>
+    <button class="secondary" type="button" onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+  <article class="page">
+    <aside class="sidebar">
+      <div class="side-block">
+        <h2 class="side-title">Perfil</h2>
+        <p>
+          Ingeniero Civil Informático orientado al desarrollo full stack.
+          Me interesa construir productos web y móviles de punta a punta,
+          aprender de forma continua y trabajar en equipo con claridad y sanamente.
+        </p>
+      </div>
+
+      <div class="side-block">
+        <h2 class="side-title">Contacto</h2>
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:alfredo.llanos@sansano.usm.cl">alfredo.llanos@sansano.usm.cl</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Teléfono</span>
+          <a href="tel:+56979508792">+56 9 7950 8792</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Ubicación</span>
+          <span>Talagante, Chile</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/alfredo-llanos">linkedin.com/in/alfredo-llanos</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">GitHub</span>
+          <a href="https://github.com/darkyuyo">github.com/darkyuyo</a>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <h2 class="side-title">Educación</h2>
+        <p class="edu-school">Universidad Técnica Federico Santa María</p>
+        <p class="edu-degree">Ingeniería Civil en Informática</p>
+        <p class="edu-dates">Mar 2018 – Sep 2024</p>
+      </div>
+
+      <div class="side-block">
+        <h2 class="side-title">Cursos</h2>
+        <div class="course-item">
+          <strong>Conceptos básicos de React</strong>
+          Meta · 2023
+        </div>
+        <div class="course-item">
+          <strong>React Avanzado</strong>
+          Meta · 2023
+        </div>
+      </div>
+
+      <div class="side-block">
+        <h2 class="side-title">Competencias</h2>
+        <ul>
+          <li><strong>Lenguajes:</strong> TypeScript, JavaScript, Python, Go / Golang, C#, Java</li>
+          <li><strong>Frontend:</strong> React, Next.js, Vue 3, React Native, Flutter, Tailwind</li>
+          <li><strong>Backend:</strong> Node.js, Fastify, Express, Ruby on Rails</li>
+          <li><strong>Datos:</strong> PostgreSQL, MySQL, MongoDB, SQLite, Redis</li>
+          <li><strong>Cloud:</strong> AWS Amplify, Cognito, AppSync, S3, Lambda, Docker</li>
+          <li><strong>IA:</strong> OpenAI, Perplexity</li>
+          <li><strong>Otros:</strong> Unity, SAP, Git, Excel intermedio</li>
+          <li><strong>Idiomas:</strong> Español nativo · Inglés intermedio</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="main">
+      <header class="header">
+        <h1>Alfredo Llanos</h1>
+        <p class="role">Full Stack Developer</p>
+        <p class="summary">
+          Desarrollador full stack con experiencia en aplicaciones productivas web y móviles,
+          desde arquitectura y despliegue hasta conversación con clientes y soporte a usuarios.
+        </p>
+      </header>
+
+      <h2 class="section-title">Experiencia</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <p class="job-title">Desarrollador Full Stack</p>
+          <p class="job-dates">Feb 2025 – Presente</p>
+        </div>
+        <p class="job-company">Blackend</p>
+        <ul>
+          <li>Desarrollo y mantención de apps productivas móvil y web.</li>
+          <li>Ciclo completo de producto: arquitectura, implementación y despliegue en iOS, Android y web.</li>
+          <li>Conversación con clientes para levantar requisitos y soporte a usuarios en producción.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <p class="job-title">Consultor IT</p>
+          <p class="job-dates">Ene 2023 – Jul 2023</p>
+        </div>
+        <p class="job-company">IBM S.A · Proyecto Carozzi</p>
+        <ul>
+          <li>Migración de versión SAP; consistencia de versiones, perfiles, roles y condiciones de contrato.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <p class="job-title">Desarrollador en Práctica</p>
+          <p class="job-dates">Ene 2021 – Mar 2021</p>
+        </div>
+        <p class="job-company">MELÓN S.A · Práctica Industrial</p>
+        <ul>
+          <li>Revisión y diagramación de procesos de negocio y documentos técnicos de entrega.</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">Proyectos</h2>
+
+      <div class="project">
+        <p class="project-name"><a href="https://licitawin.blackend.dev" target="_blank" rel="noopener">LicitaWin</a></p>
+        <p class="project-tech">Vue 3 · TypeScript · Fastify · Pinia · Tailwind · OpenAI · Perplexity</p>
+        <p>SaaS para cotizar Compras Ágiles en Mercado Público: búsqueda de oportunidades, precios de retail asistidos por IA, gestión de equipo y envío a mercadopublico.cl.</p>
+      </div>
+
+      <div class="project">
+        <p class="project-name">Checkview</p>
+        <p class="project-tech">Flutter · Amplify Gen 2 · AWS · Hive · GetX</p>
+        <p>App offline-first de inspección de calidad agrícola: reportes con defectos/mediciones, catálogos y sincronización al recuperar red.</p>
+      </div>
+
+      <div class="project">
+        <p class="project-name">Alisur Formulator</p>
+        <p class="project-tech">Ruby on Rails · Vue.js · PostgreSQL · Sidekiq</p>
+        <p>Formulación nutricional multi-tenant de raciones (modelo CNCPS) con pedidos, pagos, inventario y calendario de producción.</p>
+      </div>
+
+      <div class="project">
+        <p class="project-name">Chiquitina</p>
+        <p class="project-tech">Ruby on Rails · PostgreSQL · ActionMailbox</p>
+        <p>Convierte solicitudes por correo en tickets/workflows trazables: parseo, enrutamiento y seguimiento.</p>
+      </div>
+
+      <div class="project">
+        <p class="project-name">Hereneo</p>
+        <p class="project-tech">Vue.js · Fastify · PostgreSQL</p>
+        <p>Marketplace de productos infantiles: catálogo, búsqueda, fichas y flujo de compra.</p>
+      </div>
+
+      <div class="project">
+        <p class="project-name">Caliper</p>
+        <p class="project-tech">React Native · SQLite</p>
+        <p>Inventario forestal en campo: captura offline, organización por parcelas/equipos y sync entre brigadas.</p>
+      </div>
+
+      <div class="project">
+        <p class="project-name">Academia R</p>
+        <p class="project-tech">React Native · Moodle API · TypeScript</p>
+        <p>E-learning móvil para Ripley: catálogo Moodle, progreso, contenidos y evaluaciones sin depender del campus web.</p>
+      </div>
+    </section>
+  </article>
+</body>
+</html>
