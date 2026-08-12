@@ -5,10 +5,12 @@ import type { BookContent } from '../../data/books'
 type Props = { content: Extract<BookContent, { type: 'stack' }> }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Frontend:  '#1B435B',
-  Backend:   '#2D4A1E',
+  Frontend: '#1B435B',
+  Backend: '#2D4A1E',
   'Bases de datos': '#5C3A1E',
   Databases: '#5C3A1E',
+  'IA y automatización': '#6B3A1E',
+  'AI & Automation': '#6B3A1E',
   'Nube y herramientas': '#4A2C5E',
   'Cloud & Tools': '#4A2C5E',
 }

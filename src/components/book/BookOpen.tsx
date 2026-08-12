@@ -33,8 +33,15 @@ function buildPages(book: ReturnType<typeof BOOKS.find> & object): ReactNode[] {
     case 'about':
       return [<AboutSection key="about" content={content} />]
 
-    case 'stack':
-      return [<StackSection key="stack" content={content} />]
+    case 'stack': {
+      const chunks = chunkArray(content.groups, 2)
+      return chunks.map((chunk, i) => (
+        <StackSection
+          key={`stack-${i}`}
+          content={{ type: 'stack', groups: chunk }}
+        />
+      ))
+    }
 
     case 'experience':
       return [<ExperienceSection key="exp" content={content} />]
