@@ -8,12 +8,12 @@ export default function EducationSection({ content }: Props) {
   const { t, i18n } = useTranslation()
   const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
   return (
-    <div style={{ fontFamily: 'var(--font-sans)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '300px', textAlign: 'center' }}>
+    <div style={{ fontFamily: 'var(--font-sans)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'min(300px, 100%)', textAlign: 'center' }}>
       <div style={{ marginBottom: '40px', borderBottom: '1px solid rgba(92,58,30,0.25)', paddingBottom: '16px', width: '100%' }}>
         <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.82rem', color: 'rgba(92,58,30,0.5)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
           {t('books.education.pageSubtitle')}
         </p>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.1rem', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.45rem, 4vw, 2.1rem)', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
           {t('books.education.pageTitle')}
         </h2>
       </div>
@@ -25,12 +25,13 @@ export default function EducationSection({ content }: Props) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: i * 0.15, duration: 0.5 }}
           style={{
-            padding: '32px 40px',
+            padding: 'clamp(20px, 5vw, 32px) clamp(16px, 5vw, 40px)',
             border: '1px solid rgba(201,162,39,0.4)',
             borderRadius: '4px',
             background: 'rgba(201,162,39,0.05)',
             maxWidth: '380px',
             width: '100%',
+            boxSizing: 'border-box',
           }}
         >
           {/* Ornament */}

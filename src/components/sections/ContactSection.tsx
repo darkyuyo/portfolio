@@ -18,12 +18,12 @@ export default function ContactSection({ content }: Props) {
   const { t, i18n } = useTranslation()
   const lang = (i18n.language === 'es' ? 'es' : 'en') as 'es' | 'en'
   return (
-    <div style={{ fontFamily: 'var(--font-sans)', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '300px' }}>
+    <div style={{ fontFamily: 'var(--font-sans)', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: 'min(300px, 100%)', width: '100%' }}>
       <div style={{ marginBottom: '28px', borderBottom: '1px solid rgba(92,58,30,0.25)', paddingBottom: '16px', width: '100%' }}>
         <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.82rem', color: 'rgba(92,58,30,0.5)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
           {t('books.contact.pageSubtitle')}
         </p>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.1rem', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.45rem, 4vw, 2.1rem)', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
           {t('books.contact.pageTitle')}
         </h2>
       </div>
@@ -60,7 +60,7 @@ export default function ContactSection({ content }: Props) {
         </p>
       </motion.div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', width: '100%', maxWidth: '360px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', width: '100%', maxWidth: '360px', minWidth: 0 }}>
         {content.items.map((item, i) => (
           <motion.div
             key={item.value}
@@ -84,12 +84,13 @@ export default function ContactSection({ content }: Props) {
                   borderRadius: '3px',
                   textDecoration: 'none',
                   transition: 'background 0.15s',
+                  minWidth: 0,
                 }}
               >
                 <span style={{ width: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(92,58,30,0.65)', flexShrink: 0 }}>{CONTACT_ICONS[item.label.en]}</span>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.5)', marginBottom: '2px' }}>{item.label[lang]}</p>
-                  <p style={{ fontSize: '0.84rem', color: '#2a1208', fontWeight: 500 }}>{item.value}</p>
+                  <p style={{ fontSize: '0.84rem', color: '#2a1208', fontWeight: 500, overflowWrap: 'anywhere' }}>{item.value}</p>
                 </div>
               </a>
             ) : (
@@ -102,12 +103,13 @@ export default function ContactSection({ content }: Props) {
                   background: 'rgba(245,230,200,0.5)',
                   border: '1px solid rgba(92,58,30,0.18)',
                   borderRadius: '3px',
+                  minWidth: 0,
                 }}
               >
                 <span style={{ width: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(92,58,30,0.65)', flexShrink: 0 }}>{CONTACT_ICONS[item.label.en]}</span>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(92,58,30,0.5)', marginBottom: '2px' }}>{item.label[lang]}</p>
-                  <p style={{ fontSize: '0.84rem', color: '#2a1208', fontWeight: 500 }}>{item.value}</p>
+                  <p style={{ fontSize: '0.84rem', color: '#2a1208', fontWeight: 500, overflowWrap: 'anywhere' }}>{item.value}</p>
                 </div>
               </div>
             )}

@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { useViewport } from '../../hooks/useIsMobile'
 
 export default function LanguageToggle({ hidden }: { hidden?: boolean }) {
   const { i18n } = useTranslation()
+  const { isMobile } = useViewport()
   const currentLang = i18n.language
 
   const toggle = () => {
@@ -18,8 +20,8 @@ export default function LanguageToggle({ hidden }: { hidden?: boolean }) {
       transition={{ delay: 0.5, duration: 0.4 }}
       style={{
         position: 'fixed',
-        top: '20px',
-        right: '20px',
+        top: 'max(12px, env(safe-area-inset-top, 0px))',
+        right: 'max(12px, env(safe-area-inset-right, 0px))',
         zIndex: 30,
         display: 'flex',
         alignItems: 'center',
@@ -43,9 +45,9 @@ export default function LanguageToggle({ hidden }: { hidden?: boolean }) {
             style={{
               fontFamily: 'var(--font-serif)',
               fontStyle: 'italic',
-              fontSize: '0.85rem',
+              fontSize: isMobile ? '0.78rem' : '0.85rem',
               letterSpacing: '0.1em',
-              padding: '8px 16px',
+              padding: isMobile ? '7px 12px' : '8px 16px',
               cursor: isActive ? 'default' : 'pointer',
               border: 'none',
               background: isActive ? 'rgba(201,162,39,0.22)' : 'transparent',

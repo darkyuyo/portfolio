@@ -6,10 +6,11 @@ type BookSpineProps = {
   book: Book
   index: number
   onClick: () => void
+  widthScale?: number
+  heightScale?: number
 }
 
-// Book height slightly varies per book for a natural look
-const HEIGHT_MAP: Record<string, number> = {
+export const BOOK_HEIGHT_MAP: Record<string, number> = {
   about: 290,
   stack: 315,
   experience: 285,
@@ -20,10 +21,22 @@ const HEIGHT_MAP: Record<string, number> = {
   contact: 294,
 }
 
-export default function BookSpine({ book, index, onClick }: BookSpineProps) {
+export const SPINE_WIDTH_FACTOR = 1.35
+
+export default function BookSpine({
+  book,
+  index,
+  onClick,
+  widthScale = 1,
+  heightScale = 1,
+}: BookSpineProps) {
   const { t } = useTranslation()
-  const height = HEIGHT_MAP[book.id] ?? 230
+  const height = Math.round((BOOK_HEIGHT_MAP[book.id] ?? 230) * heightScale)
+  const width = Math.max(36, Math.round(book.spine.thickness * SPINE_WIDTH_FACTOR * widthScale))
   const title = t(book.spine.titleKey as Parameters<typeof t>[0])
+  const compact = heightScale < 0.85 || widthScale < 0.9
+  const titleSize = compact ? '0.72rem' : '0.85rem'
+  const romanSize = compact ? '0.64rem' : '0.75rem'
 
   return (
     <motion.button
@@ -37,7 +50,7 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       whileHover={{
-        y: -10,
+        y: compact ? -6 : -10,
         rotateY: 8,
         scale: 1.02,
         transition: { duration: 0.2, ease: 'easeOut' },
@@ -45,8 +58,9 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
       whileTap={{ scale: 0.98 }}
       style={{
         position: 'relative',
-        width: `${Math.round(book.spine.thickness * 1.35)}px`,
+        width: `${width}px`,
         height: `${height}px`,
+        minWidth: '36px',
         background: `linear-gradient(
           180deg,
           ${book.spine.highlightColor} 0%,
@@ -57,7 +71,7 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         borderRadius: '2px 4px 4px 2px',
         cursor: 'pointer',
         border: 'none',
-        padding: 0,
+        padding: compact ? '8px 0' : 0,
         outline: 'none',
         boxShadow: `
           inset -3px 0 6px rgba(0,0,0,0.35),
@@ -71,12 +85,14 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
         alignItems: 'center',
         justifyContent: 'space-between',
         overflow: 'hidden',
+        flexShrink: 0,
+        WebkitTapHighlightColor: 'transparent',
       }}
     >
       <span
         style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: '0.75rem',
+          fontSize: romanSize,
           color: 'rgba(255,255,255,0.35)',
           letterSpacing: '0.05em',
         }}
@@ -87,10 +103,10 @@ export default function BookSpine({ book, index, onClick }: BookSpineProps) {
       <span
         style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: '0.85rem',
+          fontSize: titleSize,
           fontWeight: 600,
           color: 'rgba(255,255,255,0.92)',
-          letterSpacing: '0.12em',
+          letterSpacing: compact ? '0.06em' : '0.12em',
           textTransform: 'uppercase',
           writingMode: 'vertical-rl',
           transform: 'rotate(180deg)',

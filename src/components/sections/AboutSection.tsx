@@ -14,7 +14,7 @@ export default function AboutSection({ content }: Props) {
         <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.82rem', color: 'rgba(92,58,30,0.5)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
           {t('books.about.pageSubtitle')}
         </p>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.1rem', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.45rem, 4vw, 2.1rem)', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
           {t('books.about.pageTitle')}
         </h2>
       </div>
@@ -27,7 +27,7 @@ export default function AboutSection({ content }: Props) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
-            style={{ fontSize: '1.02rem', lineHeight: 1.75, color: '#3a2a1a', margin: 0 }}
+            style={{ fontSize: 'clamp(0.92rem, 2.6vw, 1.02rem)', lineHeight: 1.75, color: '#3a2a1a', margin: 0 }}
           >
             {paragraph[lang]}
           </motion.p>

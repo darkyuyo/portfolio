@@ -35,7 +35,9 @@ html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
+  max-width: 100%;
   height: 100%;
+  height: 100dvh;
   overflow: hidden;
   background-color: var(--color-bg-library);
   font-family: var(--font-sans);
@@ -67,6 +69,10 @@ html, body, #root {
 }
 
 /* ── Scrollbar styling (book content) ──────────────────── */
+.book-scroll {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 .book-scroll::-webkit-scrollbar { width: 4px; }
 .book-scroll::-webkit-scrollbar-track { background: transparent; }
 .book-scroll::-webkit-scrollbar-thumb { background: var(--color-gold-muted); border-radius: 2px; }
@@ -76,6 +82,17 @@ html, body, #root {
 
 @media (max-width: 767px) {
   .book-scroll h2 {
-    font-size: 1.5rem !important;
+    font-size: clamp(1.35rem, 7vw, 1.7rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .book-scroll h3 {
+    font-size: 1.02rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .book-scroll h2 {
+    font-size: 1.28rem !important;
   }
 }

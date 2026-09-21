@@ -2,7 +2,7 @@
 import type { ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { useIsMobile } from '../../hooks/useIsMobile'
+import { useViewport } from '../../hooks/useIsMobile'
 
 type PageFlipProps = {
   pages: ReactNode[]
@@ -12,7 +12,7 @@ type PageFlipProps = {
 
 export default function PageFlip({ pages, bookColor }: PageFlipProps) {
   const { t } = useTranslation()
-  const isMobile = useIsMobile()
+  const { isMobile } = useViewport()
   const [currentPage, setCurrentPage] = useState(0)
   const [direction, setDirection] = useState<1 | -1>(1)
 
@@ -32,8 +32,7 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
   }
 
   return (
-    <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>
-      {/* Page area */}
+    <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0, minWidth: 0 }}>
       <div
         className="book-perspective"
         style={{ flex: 1, minHeight: 0, position: 'relative', overflow: 'hidden' }}
@@ -51,7 +50,14 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
           >
             <div
               className="book-scroll"
-              style={{ height: '100%', overflowY: 'auto', padding: isMobile ? '24px 20px' : '40px 48px', color: '#2a1d13' }}
+              style={{
+                height: '100%',
+                overflowY: 'auto',
+                overflowX: 'hidden',
+                padding: isMobile ? '20px 16px 28px' : '40px 48px',
+                color: '#2a1d13',
+                WebkitOverflowScrolling: 'touch',
+              }}
             >
               {pages[currentPage]}
             </div>
@@ -59,14 +65,17 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
         </AnimatePresence>
       </div>
 
-      {/* Navigation footer */}
       {totalPages > 1 && (
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '12px 24px 16px',
+            gap: 8,
+            padding: isMobile ? '10px 12px' : '12px 24px 16px',
+            paddingBottom: isMobile
+              ? 'max(10px, env(safe-area-inset-bottom, 0px))'
+              : '16px',
             borderTop: '1px solid rgba(92,58,30,0.3)',
             background: 'rgba(232,213,163,0.4)',
             flexShrink: 0,
@@ -79,16 +88,17 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
             whileTap={canPrev ? { scale: 0.95 } : {}}
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '0.9rem',
+              fontSize: isMobile ? '0.8rem' : '0.9rem',
               color: canPrev ? bookColor : 'rgba(92,58,30,0.35)',
               background: 'none',
               border: 'none',
               cursor: canPrev ? 'pointer' : 'default',
               letterSpacing: '0.05em',
-              padding: '4px 8px',
+              padding: isMobile ? '8px 4px' : '4px 8px',
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
+              minWidth: isMobile ? 72 : undefined,
             }}
           >
             {`<- ${t('ui.prev')}`}
@@ -97,9 +107,11 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
           <span
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.84rem',
+              fontSize: isMobile ? '0.74rem' : '0.84rem',
               color: 'rgba(92,58,30,0.6)',
               letterSpacing: '0.08em',
+              textAlign: 'center',
+              flexShrink: 0,
             }}
           >
             {`${t('ui.page')} ${currentPage + 1} ${t('ui.of')} ${totalPages}`}
@@ -112,16 +124,18 @@ export default function PageFlip({ pages, bookColor }: PageFlipProps) {
             whileTap={canNext ? { scale: 0.95 } : {}}
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '0.9rem',
+              fontSize: isMobile ? '0.8rem' : '0.9rem',
               color: canNext ? bookColor : 'rgba(92,58,30,0.35)',
               background: 'none',
               border: 'none',
               cursor: canNext ? 'pointer' : 'default',
               letterSpacing: '0.05em',
-              padding: '4px 8px',
+              padding: isMobile ? '8px 4px' : '4px 8px',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'flex-end',
               gap: '6px',
+              minWidth: isMobile ? 72 : undefined,
             }}
           >
             {`${t('ui.next')} ->`}

@@ -19,10 +19,11 @@ function ProjectCard({ project, index, bookKey }: { project: Project; index: num
       transition={{ delay: index * 0.1, duration: 0.4 }}
       style={{
         marginBottom: '24px',
-        padding: '16px',
+        padding: isMobile ? '14px' : '16px',
         background: 'rgba(245,230,200,0.6)',
         border: '1px solid rgba(92,58,30,0.2)',
         borderRadius: '4px',
+        minWidth: 0,
       }}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
@@ -80,7 +81,7 @@ export default function ProjectsSection({ content, bookKey }: Props) {
         <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.82rem', color: 'rgba(92,58,30,0.5)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
           {t(subtitleKey)}
         </p>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.1rem', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.45rem, 4vw, 2.1rem)', fontWeight: 600, color: '#2a1208', margin: 0, lineHeight: 1.2, fontStyle: 'italic' }}>
           {t(titleKey)}
         </h2>
       </div>
