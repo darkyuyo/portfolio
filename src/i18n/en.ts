@@ -10,7 +10,7 @@ const en = {
     openBook: 'Open book',
     backToShelf: 'Back to shelf',
     viewGithub: 'GitHub',
-    viewDemo: 'Demo',
+    viewDemo: 'Visit site',
     intro: 'Choose a book to explore my story as a developer.',
   },
   books: {
