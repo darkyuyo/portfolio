@@ -11,6 +11,7 @@ const en = {
     backToShelf: 'Back to shelf',
     viewGithub: 'GitHub',
     viewDemo: 'Visit site',
+    viewStore: 'Google Play',
     intro: 'Choose a book to explore my story as a developer.',
   },
   books: {

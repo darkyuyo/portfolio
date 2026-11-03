@@ -33,7 +33,7 @@ function ProjectCard({ project, index, bookKey }: { project: Project; index: num
         <div style={{ display: 'flex', gap: '6px' }}>
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.68rem', padding: '2px 8px', background: 'rgba(201,162,39,0.15)', border: '1px solid rgba(201,162,39,0.4)', borderRadius: '2px', color: '#3a2208', textDecoration: 'none', fontFamily: 'var(--font-sans)', letterSpacing: '0.06em' }}>
-              {t('ui.viewDemo')}
+              {t(project.demo.includes('play.google.com') ? 'ui.viewStore' : 'ui.viewDemo')}
             </a>
           )}
         </div>

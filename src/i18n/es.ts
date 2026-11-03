@@ -11,6 +11,7 @@ const es = {
     backToShelf: 'Volver al estante',
     viewGithub: 'GitHub',
     viewDemo: 'Ver sitio',
+    viewStore: 'Google Play',
     intro: 'Elige un libro para conocer mi historia como desarrollador.',
   },
   books: {

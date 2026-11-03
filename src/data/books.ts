@@ -271,6 +271,7 @@ export const BOOKS: Book[] = [
           description: { es: 'Plataforma multi-tenant de formulación nutricional de raciones para ganado lechero (modelo CNCPS), con pedidos, pagos, inventario y calendario de producción para Alisur, Colún y Coagra.', en: 'Multi-tenant nutritional ration formulation platform for dairy cattle (CNCPS model), with orders, payments, inventory and production calendar for Alisur, Colún and Coagra.' },
           challenge: { es: 'Calcular fórmulas nutricionales válidas bajo restricciones por tenant, ingredientes y límites de granos, integrando comercio (pedidos/pagos) en la misma app.', en: 'Computing valid nutritional formulas under per-tenant, ingredient and grain-limit constraints, while integrating commerce (orders/payments) in the same app.' },
           solution: { es: 'Formulador interactivo Vue sobre Rails 6.1, ejecución CNCPS asíncrona, contexto multi-empresa y flujos de pedido/pago (PuntoPagos/Transbank) con ActiveAdmin.', en: 'Interactive Vue formulator on Rails 6.1, async CNCPS execution, multi-company context and order/payment flows (PuntoPagos/Transbank) with ActiveAdmin.' },
+          demo: 'https://www.alisur.cl',
         },
         {
           name: 'Checkview',
@@ -278,7 +279,7 @@ export const BOOKS: Book[] = [
           description: { es: 'App móvil de inspección de calidad agrícola (intake, visit, finish, destination) para inspectores y empresas: reportes con defectos/mediciones, gestión de especies, clientes, exportadores y growers, más envío de reportes por correo.', en: 'Mobile agricultural quality-inspection app (intake, visit, finish, destination) for inspectors and companies: defect/measurement reports, species/client/exporter/grower management, and report email delivery.' },
           challenge: { es: 'Operar en packing y terreno con conectividad intermitente, sin perder reportes, fotos ni catálogos, y sincronizar sin conflictos al volver online.', en: 'Operating in packing houses and the field with intermittent connectivity without losing reports, photos or catalogs, then syncing without conflicts when back online.' },
           solution: { es: 'Flutter offline-first con Hive + Amplify Gen 2 (Cognito, AppSync, S3, Lambda): repositorios GetX, sync diferido y reportes HTML/PDF enviados vía backend.', en: 'Offline-first Flutter with Hive + Amplify Gen 2 (Cognito, AppSync, S3, Lambda): GetX repositories, deferred sync and HTML/PDF reports sent through the backend.' },
-          github: 'https://github.com/darkyuyo',
+          demo: 'https://play.google.com/store/apps/details?id=pro.checkview.checkview_go&hl=es_419',
         },
         {
           name: 'Academia R',
@@ -286,7 +287,7 @@ export const BOOKS: Book[] = [
           description: { es: 'App de e-learning para colaboradores de Ripley: catálogo de cursos Moodle, progreso, contenidos y evaluaciones desde el móvil, sin depender del campus web.', en: 'E-learning app for Ripley employees: Moodle course catalog, progress, content and assessments on mobile, without relying on the web campus.' },
           challenge: { es: 'La API REST de Moodle es inconsistente (auth por token, payloads heterogéneos) y debía sentirse nativa en iOS/Android con sesión estable.', en: 'Moodle’s REST API is inconsistent (token auth, heterogeneous payloads) and still needed to feel native on iOS/Android with a stable session.' },
           solution: { es: 'Capa de abstracción tipada que normaliza endpoints Moodle a un estado de app limpio, con refresh de token y pantallas orientadas a progreso del curso.', en: 'Typed abstraction layer normalizing Moodle endpoints into clean app state, with token refresh and course-progress-oriented screens.' },
-          github: 'https://github.com/darkyuyo',
+          demo: 'https://play.google.com/store/apps/details?id=com.alfredollanos.academiar&hl=es_419',
         },
         {
           name: 'Hereneo',
@@ -294,7 +295,7 @@ export const BOOKS: Book[] = [
           description: { es: 'Marketplace de productos infantiles que conecta padres con vendedores verificados: catálogo, búsqueda, fichas de producto y flujo de compra enfocado en confianza y usabilidad.', en: 'Infant-products marketplace connecting parents with verified sellers: catalog, search, product detail and checkout focused on trust and usability.' },
           challenge: { es: 'Catálogo amplio con filtros cruzados (edad, categoría, precio, vendedor) sin degradar la experiencia en dispositivos modestos.', en: 'A wide catalog with cross filters (age, category, price, seller) without degrading UX on modest devices.' },
           solution: { es: 'Frontend Vue con filtros computados, debounce y lazy loading; API Fastify + PostgreSQL para catálogo, vendedores y carrito/sesión sin recargas innecesarias.', en: 'Vue frontend with computed filters, debounce and lazy loading; Fastify API + PostgreSQL for catalog, sellers and cart/session without unnecessary reloads.' },
-          github: 'https://github.com/darkyuyo',
+          demo: 'https://www.hereneo.cl',
         },
         {
           name: 'Caliper',
@@ -302,7 +303,7 @@ export const BOOKS: Book[] = [
           description: { es: 'App de campo para inventario forestal: captura de mediciones y estructuras de árboles, organización por parcelas/equipos y compartición de datos entre brigadas en terreno.', en: 'Field app for forest inventory: capture measurements and tree structures, organize by plots/teams and share data across ground crews.' },
           challenge: { es: 'Modelar jerarquías forestales complejas y seguir trabajando sin señal, con sync confiable al reconectar varios dispositivos.', en: 'Modeling complex forest hierarchies and keep working offline, with reliable sync when several devices reconnect.' },
           solution: { es: 'Esquema local SQLite con cola de cambios pendientes y sincronización al recuperar red, más UI móvil pensada para uso con guantes y poca batería.', en: 'Local SQLite schema with a pending-change queue and sync-on-reconnect, plus a mobile UI suited for gloves and low battery.' },
-          github: 'https://github.com/darkyuyo',
+          demo: 'https://play.google.com/store/apps/details?id=com.alfredollanos.Caliper&hl=es_419',
         },
         {
           name: 'Chiquitina',
